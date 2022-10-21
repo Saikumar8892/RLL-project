@@ -22,6 +22,8 @@ export class EngineersComponent implements OnInit {
   viewComplaints: boolean = false;
   viewFeedbacks: boolean = false;
   newEngineerStatus: string;
+  login:boolean=true;
+  engineerEmail:String;
 
   constructor(
     private _engineersService: EngineersService,
@@ -38,12 +40,7 @@ export class EngineersComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  registerEngineer(): any {
-    console.log('inside registerManager() !');
-    this._engineersService.registerEngineer(this.engineer).subscribe(() => {
-      alert('Successfully Registered !');
-    });
-  }
+ 
 
   validateEngineer(): any {
     this._engineersService
@@ -51,13 +48,16 @@ export class EngineersComponent implements OnInit {
       .subscribe((data) => {
         if (data != null) {
           this.engineerLoggedIn = this.loginForm.value['engineerEmail'];
+          alert("engineer login success")
           console.log(
             'Engineer Exists : reached safely with associated ticket Ids -- ',
             data
           );
+          this.login=false;
           this.ticketIds = data;
           this.engineerLoginStatus = true;
         } else {
+          alert("Invalid credentials")
           console.log('Engineer does not exists !');
         }
       });
@@ -81,6 +81,7 @@ export class EngineersComponent implements OnInit {
     });
   }
   updateStatus(complaint: Complaints) {
+    alert(" Status Updated")
     console.log('new status', this.newEngineerStatus);
 
     this._engineersService

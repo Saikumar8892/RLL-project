@@ -1,26 +1,46 @@
-<div class="row" style="justify-content: center; background-color: #072229d5">
+<div class="coloum" style="justify-content: center">
   <div style="padding: 1rem">
-    <button type="submit" class="btn btn-info" (click)="viewCustomers()">
-      <b><i>View Customers</i></b>
+    <button
+      type="submit"
+      class="btn btn-primary btn-lg"
+      (click)="viewManagers()"
+    >
+      <b><i>View Managers</i> </b>
     </button>
   </div>
   <div style="padding: 1rem">
-    <button type="submit" class="btn btn-success" (click)="viewManagers()">
-      <b><i> View Managers</i> </b>
-    </button>
-  </div>
-  <div style="padding: 1rem">
-    <button type="submit" class="btn btn-warning" (click)="viewEngineers()">
+    <button
+      type="submit"
+      class="btn btn-primary btn-lg"
+      (click)="viewEngineers()"
+    >
       <b><i>View Engineers</i></b>
     </button>
   </div>
   <div style="padding: 1rem">
-    <button type="submit" class="btn btn-secondary" (click)="viewComplaints()">
+    <button
+      type="submit"
+      class="btn btn-primary btn-lg"
+      (click)="viewCustomers()"
+    >
+      <b><i>View Customers</i></b>
+    </button>
+  </div>
+  <div style="padding: 1rem">
+    <button
+      type="submit"
+      class="btn btn-primary btn-lg"
+      (click)="viewComplaints()"
+    >
       <b><i>View Complaints</i></b>
     </button>
   </div>
   <div style="padding: 1rem">
-    <button type="submit" class="btn btn-primary" (click)="viewFeedbacks()">
+    <button
+      type="submit"
+      class="btn btn-primary btn-lg"
+      (click)="viewFeedbacks()"
+    >
       <b><i>View Feedbacks</i></b>
     </button>
   </div>
@@ -32,36 +52,38 @@
 <div
   *ngIf="anyButtonClicked"
   class="container"
-  style="background-color: #10739e"
+  style="background-color: #0302479d"
 >
-  <button (click)="closeAll()" class="btn btn-danger">Close All</button><br />
+  <button (click)="closeAll()" class="btn btn-info">Close All</button><br />
 </div>
 <!-- ------------------------------------Managers------------------------------------ -->
 <!-- view Managers -->
 <div
   *ngIf="viewManagersStatus"
   class="container"
-  style="background-color: #03e46c"
+  style="background-color: #05034d9d"
 >
   <br />
   <div class="col-lg-7 mx-auto">
-    <h4>Managers</h4>
+    <h4 class="text-white">
+      <b><i>Managers</i></b>
+    </h4>
   </div>
 
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Manager Email</th>
-        <th scope="col">Manager Name</th>
-        <th scope="col">Manager Pincode</th>
+        <th scope="col" class="text-white">Manager Email</th>
+        <th scope="col" class="text-white">Manager Name</th>
+        <th scope="col" class="text-white">Manager Pincode</th>
       </tr>
     </thead>
     <br />
     <tbody>
       <tr *ngFor="let manager of managers">
-        <td scope="row">{{ manager.managerEmail }}</td>
-        <td>{{ manager.managerName }}</td>
-        <td>{{ manager.managerPincode }}</td>
+        <td scope="row" class="text-white">{{ manager.managerEmail }}</td>
+        <td class="text-white">{{ manager.managerName }}</td>
+        <td class="text-white">{{ manager.managerPincode }}</td>
         <td>
           <button (click)="deleteManager(manager)" class="btn btn-danger">
             <i class="fa fa-trash"></i>
@@ -76,7 +98,7 @@
       <tr *ngIf="updateManagerStatus">
         <div style="width: 100%">
           <form (ngSubmit)="newManagerUpdates()">
-            <h4>Update Manager Pincode</h4>
+            <h4 class="text-white">Update Manager Pincode</h4>
             <div class="form-group">
               <input
                 type="text"
@@ -99,31 +121,32 @@
 <div
   *ngIf="viewEngineersStatus"
   class="container"
-  style="background-color: #e4ac03"
+  style="background-color: #05034d9d"
 >
   <br />
   <div class="col-lg-7 mx-auto">
-    <h4>Engineers</h4>
+    <h4 class="text-white">
+      <b><i>Engineers</i></b>
+    </h4>
   </div>
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Engineer Email</th>
-        <th scope="col">Manager Name</th>
+        <th scope="col" class="text-white">Engineer Email</th>
+        <th scope="col" class="text-white">Engineer Name</th>
       </tr>
     </thead>
     <br />
     <tbody>
       <tr *ngFor="let engineer of engineers">
-        <td scope="row">{{ engineer.engineerEmail }}</td>
-        <td>{{ engineer.engineerName }}</td>
+        <td scope="row" class="text-white">{{ engineer.engineerEmail }}</td>
+        <td class="text-white">{{ engineer.engineerName }}</td>
 
         <td>
           <button (click)="deleteEngineer(engineer)" class="btn btn-danger">
             <i class="fa fa-trash"></i>
           </button>
         </td>
-        
       </tr>
     </tbody>
   </table>
@@ -133,30 +156,32 @@
 <div
   *ngIf="viewCustomersStatus"
   class="container"
-  style="background-color: #376b79"
+  style="background-color: #05034d9d"
 >
   <br />
   <div class="col-lg-7 mx-auto">
-    <h4>Customers</h4>
+    <h4 class="text-white">
+      <b><i>Customers</i></b>
+    </h4>
   </div>
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Customer Email</th>
-        <th scope="col">Customer Name</th>
-        <th scope="col">Customer Mobile</th>
-        <th scope="col">Customer Address</th>
-        <th scope="col">Customer Pincode</th>
+        <th scope="col" class="text-white">Customer Email</th>
+        <th scope="col" class="text-white">Customer Name</th>
+        <th scope="col" class="text-white">Customer Mobile</th>
+        <th scope="col" class="text-white">Customer Address</th>
+        <th scope="col" class="text-white">Customer Pincode</th>
       </tr>
     </thead>
     <br />
     <tbody>
       <tr *ngFor="let customer of customers">
-        <td scope="row">{{ customer.customerEmail }}</td>
-        <td>{{ customer.customerName }}</td>
-        <td>{{ customer.customerMobile }}</td>
-        <td>{{ customer.customerAddress }}</td>
-        <td>{{ customer.customerPincode }}</td>
+        <td scope="row" class="text-white">{{ customer.customerEmail }}</td>
+        <td class="text-white">{{ customer.customerName }}</td>
+        <td class="text-white">{{ customer.customerMobile }}</td>
+        <td class="text-white">{{ customer.customerAddress }}</td>
+        <td class="text-white">{{ customer.customerPincode }}</td>
 
         <td>
           <button (click)="deleteCustomer(customer)" class="btn btn-danger">
@@ -172,7 +197,7 @@
       <tr *ngIf="updateCustomerStatus">
         <div style="width: 100%">
           <form (ngSubmit)="newCustomerUpdates()">
-            <h4>Update Customer Pincode</h4>
+            <h4 class="text-white">Update Customer Pincode</h4>
             <div class="form-group">
               <input
                 type="text"
@@ -194,32 +219,34 @@
 <div
   *ngIf="viewComplaintsStatus"
   class="container"
-  style="background-color: #616b6d"
+  style="background-color: #05034d9d"
 >
   <br />
   <div class="col-lg-7 mx-auto">
-    <h4>Complaints</h4>
+    <h4 class="text-white">
+      <b><i>Complaints</i></b>
+    </h4>
   </div>
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Ticket Id</th>
-        <th scope="col">Customer Email</th>
-        <th scope="col">Complaint</th>
-        <th scope="col">Pincode</th>
-        <th scope="col">status</th>
-        <th scope="col">Review</th>
+        <th scope="col" class="text-white">Ticket Id</th>
+        <th scope="col" class="text-white">Customer Email</th>
+        <th scope="col" class="text-white">Complaint</th>
+        <th scope="col" class="text-white">Pincode</th>
+        <th scope="col" class="text-white">status</th>
+        <th scope="col" class="text-white">Review</th>
       </tr>
     </thead>
     <br />
     <tbody>
       <tr *ngFor="let complaint of complaints">
-        <td scope="row">{{ complaint.ticketId }}</td>
-        <td>{{ complaint.customerEmail }}</td>
-        <td>{{ complaint.complaint }}</td>
-        <td>{{ complaint.pincode }}</td>
-        <td>{{ complaint.status }}</td>
-        <td>
+        <td scope="row" class="text-white">{{ complaint.ticketId }}</td>
+        <td class="text-white">{{ complaint.customerEmail }}</td>
+        <td class="text-white">{{ complaint.complaint }}</td>
+        <td class="text-white">{{ complaint.pincode }}</td>
+        <td class="text-white">{{ complaint.status }}</td>
+        <td class="text-white">
           <button (click)="deleteComplaint(complaint)" class="btn btn-danger">
             <i class="fa fa-trash"></i>
           </button>
@@ -234,7 +261,7 @@
       <tr *ngIf="updateComplaintStatus">
         <div>
           <form (ngSubmit)="newComplaintUpdates()">
-            <h4>Update Complaint Pincode</h4>
+            <h4 class="text-white">Update Complaint Pincode</h4>
             <div class="form-group">
               <input
                 type="text"
@@ -286,19 +313,21 @@
 <div
   *ngIf="viewFeedbacksStatus"
   class="container"
-  style="background-color: #0703e4"
+  style="background-color: #05034d9d"
 >
   <br />
   <div class="col-lg-7 mx-auto">
-    <h4>Feedbacks</h4>
+    <h4 class="text-white">
+      <b><i>Feedbacks</i></b>
+    </h4>
   </div>
   <table class="table">
     <thead>
       <tr>
-        <th style="padding-right: 5px">Feedback Id</th>
-        <th style="padding-right: 5px">Ticket Id</th>
-        <th style="padding-right: 5px">Customer Email</th>
-        <th style="padding-right: 5px">Feedback</th>
+        <th style="padding-right: 5px" class="text-white">Feedback Id</th>
+        <th style="padding-right: 5px" class="text-white">Ticket Id</th>
+        <th style="padding-right: 5px" class="text-white">Customer Email</th>
+        <th style="padding-right: 5px" class="text-white">Feedback</th>
       </tr>
     </thead>
     <br />
@@ -307,9 +336,15 @@
         <td style="padding-right: 5px" scope="row">
           {{ feedback.feedbackId }}
         </td>
-        <td style="padding-right: 5px">{{ feedback.ticketId }}</td>
-        <td style="padding-right: 5px">{{ feedback.customerEmail }}</td>
-        <td style="padding-right: 5px">{{ feedback.feedback }}</td>
+        <td style="padding-right: 5px" class="text-white">
+          {{ feedback.ticketId }}
+        </td>
+        <td style="padding-right: 5px" class="text-white">
+          {{ feedback.customerEmail }}
+        </td>
+        <td style="padding-right: 5px" class="text-white">
+          {{ feedback.feedback }}
+        </td>
 
         <td>
           <button (click)="deleteFeedback(feedback)" class="btn btn-danger">

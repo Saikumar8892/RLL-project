@@ -2,7 +2,7 @@ import { EngineersService } from './../../services/engineers.service';
 import { Feedbacks } from './../../models/feedbacks';
 import { FeedbacksService } from './../../services/feedbacks.service';
 import { Complaints } from './../../models/complaints';
-import { ActivatedRoute, Router } from '@angular/router';
+
 import { ManagersService } from './../../services/managers.service';
 import { Managers } from './../../models/managers';
 import { Component, OnInit } from '@angular/core';
@@ -16,24 +16,28 @@ import { FormBuilder } from '@angular/forms';
 export class ManagersComponent implements OnInit {
   manager: Managers = new Managers();
   managerLoggedIn: string;
+  login:boolean=true;
+  assignEngineersButton: boolean = true;
+  assignEngineersDropdown: boolean = false;
   managerloginStatus: boolean = false;
   viewComplaints: boolean = false;
   viewFeedbacks: boolean = false;
   managerPincode: string;
   complaints: Complaints[] = [];
   feedbacks: Feedbacks[] = [];
-  assignEngineersButton: boolean = true;
-  assignEngineersDropdown: boolean = false;
+managerEmail:string;
+
   engineerEmails: string[] = [];
   selectedEngineer: string;
 
+
   constructor(
     private _managersService: ManagersService,
-    private _router: Router,
-    private _activatedRoute: ActivatedRoute,
+   
     private _formBuilder: FormBuilder,
     private _feedbacksService: FeedbacksService,
-    private _engineersService: EngineersService
+    private _engineersService: EngineersService,
+
   ) {}
 
   loginForm = this._formBuilder.group({
@@ -42,35 +46,40 @@ export class ManagersComponent implements OnInit {
     engineerEmail: '',
   });
 
-  ngOnInit(): void {}
-
-  registerManager(): any {
-    console.log('inside registerManager() !');
-    this._managersService.registerManager(this.manager).subscribe(() => {
-      alert('Successfully Registered !');
-    });
+  ngOnInit(): void {
+    
   }
 
+  
+
   validateManager(): any {
+    
     this._managersService
       .validateManager(this.loginForm.value)
       .subscribe((data) => {
         if (data != null) {
           this.managerLoggedIn = this.loginForm.value['managerEmail'];
+          
           this.managerloginStatus = true;
+          this.login=false;
           this.managerPincode = data.managerPincode;
+          alert("manager login success")
           console.log('Manager Exists : reached safely !', this.managerPincode);
+          
           // this._router.navigateByUrl('/feedbacks');
         } else {
+          alert("Invalid credentials")
           console.log('Manager does not exists !');
         }
       });
   }
 
   getAllComplaintsByPincode() {
+   
     console.log('Inside manager.components.ts --- ', this.managerPincode);
 
     this.viewComplaints = true;
+   
     this._managersService
       .getAllComplaintsByPincode(this.managerPincode)
       .subscribe((data) => {
@@ -87,6 +96,7 @@ export class ManagersComponent implements OnInit {
     });
   }
   assignEngineers() {
+   
     this.assignEngineersButton = false;
     this.assignEngineersDropdown = true;
     this._engineersService.getAllEngineerMails().subscribe((data) => {
@@ -111,6 +121,7 @@ export class ManagersComponent implements OnInit {
   }
   engineerSelected(event: any) {
     //update the ui
+    
     this.selectedEngineer = event.target.value;
   }
 }

@@ -26,13 +26,7 @@ export class CustomersComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  registerCustomer(): any {
-    console.log('inside registerCustomer () !');
-
-    this._customersService.registerCustomer(this.customer).subscribe(() => {
-      alert('Successfully Registered !');
-    });
-  }
+  
 
   validateCustomer(): any {
     this._customersService
@@ -43,7 +37,7 @@ export class CustomersComponent implements OnInit {
           this._customersService.setCustomerLoggedIn(
             this.customerLoggedIn.toString()
           );
-
+          alert("customer login success")
           console.log(
             'Customer Exists : reached safely !',
             this.customerLoggedIn
@@ -57,6 +51,7 @@ export class CustomersComponent implements OnInit {
           //   },
           // ]);
         } else {
+          alert("Invalid credentials")
           console.log('Customer does not exists !');
         }
       });
